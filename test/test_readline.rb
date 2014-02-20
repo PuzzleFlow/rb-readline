@@ -13,9 +13,13 @@ class TC_Readline < Test::Unit::TestCase
    def test_readline_basic
       assert_respond_to(Readline, :readline)      
    end
-   
-   def test_readline_expected_errors
-      assert_raise(ArgumentError){ Readline.readline }
+
+   def test_readline_with_default_parameters_does_not_error
+    thread = Thread.new { Readline.readline }
+    sleep 0.1
+    assert thread.alive?
+   ensure
+    thread.kill
    end
 
    def test_input_basic

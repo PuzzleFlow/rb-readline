@@ -26,7 +26,7 @@ module Readline
    #
    #    loop{ Readline.readline('> ') }
    #
-   def readline(prompt, add_history=nil)
+   def readline(prompt = '', add_history=nil)
       if $stdin.closed?
          raise IOError, "stdin closed"
       end
